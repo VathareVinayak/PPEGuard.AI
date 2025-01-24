@@ -75,8 +75,6 @@ Contributions are welcome! Please follow these steps:
 3. Commit your changes and push them to your fork.
 4. Open a pull request detailing your changes.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
 - OpenCV and TensorFlow for providing powerful tools for computer vision.
