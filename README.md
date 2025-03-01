@@ -1,6 +1,6 @@
 # PPEGuard.AI (SafetyKit Detection System)
 
-This repository contains a real-time project for detecting safety helmets, gloves, dress code compliance, and shoes in an industrial environment using advanced computer vision techniques. The system is designed to enhance worker safety by monitoring compliance with PPE (Personal Protective Equipment) regulations.
+This repository contains a real-time project for detecting safety helmets, gloves, dress code compliance, and shoes in an industrial environment using advanced computer vision techniques. The system is designed to enhance worker safety by monitoring compliance with **PPE (Personal Protective Equipment)** regulations.
 
 🚀 **Current Status:**
 - **Helmet detection** is fully implemented and functional.
