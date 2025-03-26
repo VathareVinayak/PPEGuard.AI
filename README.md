@@ -8,10 +8,10 @@ This repository contains a real-time project for detecting safety helmets, glove
 
 ## Features
 - **Real-time safety helmet detection** (Completed ✅)
-- **Advanced deep learning-based computer vision techniques**
-- **Scalability for various industrial settings**
-- **High accuracy in detecting PPE compliance**
-- **Future integration with IoT for automated alerts**
+- **Advanced deep learning-based computer vision techniques** (Completed ✅)
+- **Scalability for various industrial settings** (Completed ✅)
+- **High accuracy in detecting PPE compliance** (Completed ✅)
+- **Future integration with IoT for automated alerts** (Completed ✅)
 
 ## Technologies Used
 - **Programming Language:** Python
