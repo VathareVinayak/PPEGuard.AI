@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live PPE Detection Stream</title>
+  <style>
+    /* Basic CSS styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+    }
+    #stream-container {
+      margin: 20px auto;
+      width: 640px;
+      height: 480px;
+      border: 2px solid #ccc;
+      background-color: black;
+    }
+    #stream-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>  
+    <h1>Live PPE Detection Stream</h1>
+  </header>
+  <div id="stream-container">
+    <!-- The live stream is loaded from the backend -->
+    <img id="live-stream" src="http://127.0.0.1:8000/stream/" alt="Live Stream">
+  </div>
+  <script>
+    // Optional: Additional JavaScript for reconnection handling can be added here.
+    document.getElementById("live-stream").onerror = function() {
+      console.error("Error loading live stream. Check backend connectivity.");
+    };
+    console.log("Live stream page loaded.");
+  </script>
+</body>
+</html>

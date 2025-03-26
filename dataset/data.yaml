@@ -1,0 +1,7 @@
+train: D:/#Safety Kit/Construction-Site-Safety-PPE-Detection/data/train/images
+val: D:/#Safety Kit/Construction-Site-Safety-PPE-Detection/data/valid/images
+test: D:/#Safety Kit/Construction-Site-Safety-PPE-Detection/data/test/images
+
+
+nc: 10
+names: ['Hardhat', 'Mask', 'NO-Hardhat', 'NO-Mask', 'NO-Safety Vest', 'Person', 'Safety Cone', 'Safety Vest', 'machinery', 'vehicle']
