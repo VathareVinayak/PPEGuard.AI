@@ -3,8 +3,8 @@
 This repository contains a real-time project for detecting safety helmets, gloves, dress code compliance, and shoes in an industrial environment using advanced computer vision techniques. The system is designed to enhance worker safety by monitoring compliance with **PPE (Personal Protective Equipment)** regulations.
 
 🚀 **Current Status:**
-- **Helmet detection** is fully implemented and functional.
-- **Gloves, dress code, and shoes detection** are currently under development.
+- **Full SafetyPPE KIT** is fully implemented and functional.
+- **Admin Dashboard Is are under development**
 
 ## Features
 - **Real-time safety helmet detection** (Completed ✅)
