@@ -100,7 +100,7 @@
                     localStorage.setItem("user_role", data.role);
                     
                     // Redirect to index.html
-                    window.location.href = "dashboard.html";
+                    window.location.href = "/dashboard";
                 } else {
                     document.getElementById("errorMessage").innerText = data.detail;
                     document.getElementById("errorMessage").classList.remove("hidden");
