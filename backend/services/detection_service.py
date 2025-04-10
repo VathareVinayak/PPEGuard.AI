@@ -19,20 +19,23 @@
 #     return db.query(Detection).filter(Detection.category == category).all()
 
 
+
 import requests
 from sqlalchemy.orm import Session
-from ..models.detection_model import Detection
+from models.detection_model import Detection
+from models.database import get_db
+from fastapi import APIRouter, Depends, UploadFile, File
 from ultralytics import YOLO
 import uuid
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
-
 IMGBB_API_KEY = os.getenv("IMGBB_API_KEY")
 
-# Load YOLOv8 model (make sure 'best.pt' path is correct)
-model = YOLO("test_Model/best.pt")  # adjust if in a different location
+# Load YOLOv8 model 
+model = YOLO(r"J:\#PPE Suit Detection\PPEGuard.AI\models\best.pt")
+
 
 # Upload image to ImgBB
 def upload_to_imgbb(image_path: str):
@@ -46,6 +49,7 @@ def upload_to_imgbb(image_path: str):
         return response.json()["data"]["url"]
     else:
         raise Exception("Failed to upload to ImgBB")
+
 
 # Run YOLO prediction, classify, upload, save to DB
 def predict_and_save(db: Session, image_file):
@@ -85,3 +89,21 @@ def predict_and_save(db: Session, image_file):
     os.remove(filename)
 
     return detection
+
+
+def save_detection(db: Session, image_url: str, category: str, detected_items: str):
+    detection = Detection(
+        image_url=image_url,
+        category=category,
+        detected_items=detected_items
+    )
+    db.add(detection)
+    db.commit()
+    db.refresh(detection)
+    return detection
+
+def get_all_detections(db: Session):
+    return db.query(Detection).all()
+
+def get_detections_by_category(db: Session, category: str):
+    return db.query(Detection).filter(Detection.category == category).all()

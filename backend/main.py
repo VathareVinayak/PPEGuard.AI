@@ -87,7 +87,8 @@ from models.database import Base, engine
 from controllers.auth_controller import auth_router
 from controllers.user_controller import user_router
 from controllers.stream_controller import stream_router
-from controllers.detection_controller import router as detection_router  # New Import
+from controllers.detection_controller import router as detection_router
+
 
 # Initialize FastAPI app
 app = FastAPI(title="PPE Kit Detection API", version="1.0")
@@ -95,7 +96,7 @@ app = FastAPI(title="PPE Kit Detection API", version="1.0")
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # use ["http://127.0.0.1:5500"] in production
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

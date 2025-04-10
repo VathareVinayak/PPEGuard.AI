@@ -52,16 +52,16 @@
 
 from fastapi import APIRouter, Depends, UploadFile, File
 from sqlalchemy.orm import Session
-from ..models.database import get_db
-from ..services.detection_service import save_detection, get_all_detections, get_detections_by_category
-from ..utils.image_uploader import upload_image_to_imgbb
+from models.database import get_db
+from services.detection_service import predict_and_save, get_detections_by_category , save_detection,get_all_detections
+from utils.image_uploader import upload_image_to_imgbb
 from ultralytics import YOLO
 import shutil
 import os
 import uuid
 
 router = APIRouter()
-model = YOLO("models/best.pt")  # Load YOLO model
+model = YOLO(r"J:\#PPE Suit Detection\PPEGuard.AI\models\best.pt")  # Load YOLO model
 
 def classify_labels(labels):
     for label in labels:

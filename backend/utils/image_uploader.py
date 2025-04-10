@@ -8,7 +8,7 @@ IMGBB_API_KEY = os.getenv("IMGBB_API_KEY")
 
 def upload_image_to_imgbb(image_path):
     with open(image_path, "rb") as file:
-        encoded_image = base64.b64encode(file.read())
+        encoded_image = base64.b64encode(file.read()).decode("utf-8")  # 🔥 fixed this line
     response = requests.post(
         "https://api.imgbb.com/1/upload",
         data={
@@ -17,4 +17,6 @@ def upload_image_to_imgbb(image_path):
         }
     )
     response.raise_for_status()
-    return response.json()["data"]["url"]
+    result = response.json()
+    print("ImgBB Upload Result:", result)  # Add for debugging
+    return result["data"]["url"]
