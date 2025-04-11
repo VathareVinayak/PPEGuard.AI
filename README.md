@@ -16,6 +16,7 @@ This repository contains a real-time project for detecting safety helmets, glove
 ## Technologies Used
 - **Programming Language:** Python
 - **Frameworks/Libraries:**
+  - Computer Vision
   - OpenCV
   - TensorFlow/Keras
   - NumPy
