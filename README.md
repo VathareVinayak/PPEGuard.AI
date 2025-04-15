@@ -22,7 +22,7 @@ This repository contains a real-time project for detecting safety helmets, glove
   - NumPy
 - **Hardware Support:** Future compatibility with edge devices (e.g., Raspberry Pi, NVIDIA Jetson)
 
-## Installation
+## Installation Steps
 1. Clone the repository:
    ```bash
    git clone https://github.com/VathareVinayak/safety-detection-system.git
