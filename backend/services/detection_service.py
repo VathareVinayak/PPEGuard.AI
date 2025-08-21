@@ -1,25 +1,3 @@
-# from sqlalchemy.orm import Session
-# from ..models.detection_model import Detection
-
-# def save_detection(db: Session, image_url: str, category: str, detected_items: str):
-#     detection = Detection(
-#         image_url=image_url,
-#         category=category,
-#         detected_items=detected_items
-#     )
-#     db.add(detection)
-#     db.commit()
-#     db.refresh(detection)
-#     return detection
-
-# def get_all_detections(db: Session):
-#     return db.query(Detection).all()
-
-# def get_detections_by_category(db: Session, category: str):
-#     return db.query(Detection).filter(Detection.category == category).all()
-
-
-
 import requests
 from sqlalchemy.orm import Session
 from models.detection_model import Detection
