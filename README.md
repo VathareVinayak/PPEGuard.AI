@@ -1,82 +1,129 @@
-# PPEGuard.AI (SafetyKit Detection System)
+# PPEGuard.AI 
+## Detection System with YOLOv8 and Admin Dashboard
 
-This repository contains a real-time project for detecting safety helmets, gloves, dress code compliance, and shoes in an industrial environment using advanced computer vision techniques. The system is designed to enhance worker safety by monitoring compliance with **PPE (Personal Protective Equipment)** regulations.
+I build a **custom object detection system** using YOLOv8 to detect PPE (Personal Protective Equipment) in images and videos. Detected items are classified and displayed on an **Admin Dashboard** for monitoring compliance in real-time.
+![PPEIMG](https://github.com/VathareVinayak/PPEGuard.AI/blob/main/output/output_yolov8n_100e/construction-safety.jpg)
 
-🚀 **Current Status:**
-- **Full SafetyPPE KIT** is fully implemented and functional.
-- **Admin Dashboard Is are under development**
+---
 
-## Features
-- **Real-time safety helmet detection** (Completed ✅)
-- **Advanced deep learning-based computer vision techniques** (Completed ✅)
-- **Scalability for various industrial settings** (Completed ✅)
-- **High accuracy in detecting PPE compliance** (Completed ✅)
-- **Future integration with IoT for automated alerts** (Completed ✅)
+## 🔹 Overview
+This project leverages **YOLOv8** for custom object detection on PPE datasets. The system includes:
 
-## Technologies Used
-- **Programming Language:** Python
-- **Frameworks/Libraries:**
-  - OpenCV
-  - TensorFlow/Keras
-  - NumPy
-- **Hardware Support:** Future compatibility with edge devices (e.g., Raspberry Pi, NVIDIA Jetson)
+- **Detection & Classification:** Detects PPE items such as helmets, gloves, vests, goggles, masks, and boots, classifying whether each item is **Wearing** or **Not Wearing**.
+- **Admin Dashboard:** Displays all detection results with images and classifications for easy monitoring.
+- **Visualization & Reporting:** Includes confusion matrix, PR curves, and batch visualizations for training and validation sets.
+---
 
-## Installation
+## 🔹 Folder Structure
+
+```
+PPEGuard.AI
+├───backend
+│   ├───app
+│   │   ├───controllers      # Detection and API logic
+│   │   ├───models           # Database models (PostgreSQL)
+│   │   ├───services         # Detection & classification services
+│   │   ├───schemas          # Pydantic schemas
+│   │   └───main.py          # FastAPI entrypoint
+├───frontend
+│   ├───templates            # HTML templates for dashboard
+│   ├───static
+│   │   ├───css              # Tailwind CSS files
+│   │   └───js               # Optional JS files
+├───data
+│   ├───train
+│   ├───valid
+│   └───test
+├───models
+│   ├───yolov8n.pt           # Pre-trained YOLOv8 model
+│   └───best.pt              # Custom trained model
+├───output
+├───results
+│   ├───confusion_matrix.png
+│   ├───PR_curve.png
+│   └───batch_visualizations
+
+````
+- **data folder:** Contains training, validation, and test datasets along with `.yaml` config files.
+- **models folder:** Stores pre-trained and custom-trained YOLOv8 models.
+- **results folder:** Includes model predictions, confusion matrices, visualizations, and PR curves.
+- **output folder:** Contains outputs after running the model for 100 epochs.
+- **source_files folder:** Sample videos/images for evaluating the model.
+- **backend folder**: FastAPI backend structured with MVC (controllers, models, services, schemas, main.py) for API and detection logic.
+- **frontend folder:** HTML + Tailwind CSS frontend for Admin Dashboard and real-time visualization of detection results.
+---
+
+## 🔹 Training & Results
+
+- **Model:** YOLOv8n (custom-trained)
+- **Results:**  
+  After training, the model produces:
+  - Predictions on test images , Streaming Via Laptop Camera
+  - Confusion matrix
+  - PR curves
+  - Batch visualizations
+
+All detection outputs are automatically updated to the **Admin Dashboard**, showing:
+
+- Detected PPE items
+- Classification as **Wearing** or **Not Wearing**
+- Images for visual confirmation
+---
+
+## 🔹 Admin Dashboard
+
+The **Admin Dashboard** is a central feature of this project:
+
+- Displays Classification of all detections.
+
+**In Working**
+- Allows easy filtering of detections by type or status
+- Facilitates monitoring of safety compliance in workplaces
+
+---
+
+## 🔹 Set-Up Instructions 
+
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/VathareVinayak/safety-detection-system.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd safety-detection-system
-   ```
-3. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+git clone <repo-link>
+cd <repo-folder>
+````
 
-## Usage
-1. Ensure your camera or video feed is configured and accessible.
-2. Run the helmet detection script:
-   ```bash
-   python helmet_detection.py
-   ```
-3. The system will process the video feed and highlight:
-   - **Workers wearing helmets** (Green bounding box)
-   - **Workers without helmets** (Red bounding box)
+2. Install dependencies:
 
-## Dataset
-- Utilizes a publicly available safety helmet detection dataset.
-- Data augmentation techniques applied to improve model performance.
+```bash
+pip install ultralytics
+pip install -r requirements.txt
+```
+3.  Environment Variables & Setup
 
-## Model Training
-1. Organize the dataset into labeled directories (e.g., `helmet` and `no_helmet`).
-2. Train the model using the provided script:
-   ```bash
-   python train_model.py
-   ```
-3. Evaluate the model:
-   ```bash
-   python evaluate_model.py
-   ```
+The project requires the following environment variables 
 
-## 🚧 Future Enhancements (Under Development)
-- 🧤 *Gloves Detection*
-- 👕 *Dress Code Compliance Detection*
-- 👞 *Shoes Detection*
-- 📡 *Integration with IoT for real-time monitoring & alerts*
-- 🚀 *Deployment optimization for edge devices*
-  
-## Contributing
-Contributions are welcome! Please follow these steps:
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Commit your changes and push them to your fork.
-4. Open a pull request with detailed explanations.
+(add them to a .env file in the backend folder)
+```bash
+DATABASE_URL=YOUR_DATABASE_KEY
+SECRET_KEY=YOUR_SECRET_KEY
+ALGORITHM=HS256 (I USED THIS ALGORITHM FOR HASHED PASSWORD)
+IMGBB_API_KEY=ADD_YOUR_DB_KEY
+```
 
-## Acknowledgments
-- OpenCV and TensorFlow for providing powerful computer vision tools.
-- Dataset contributors for enabling the development of this project.
+3. Run the detection system:
+```bash
+uvicorn main:app --reload
+```
 
-📢 Stay tuned for updates as we enhance PPEGuard.AI to detect more safety gear! 🚀
+4. Access the **Admin Dashboard** to view classified detections.
+```bash
+http://127.0.0.1:8000/stream
+```
+
+---
+
+## 🔹 Acknowledgements
+
+* **Ultralytics YOLOv8** for the object detection framework
+* Kaggle for GPU resources
+* Dataset contributors for PPE images
+
 

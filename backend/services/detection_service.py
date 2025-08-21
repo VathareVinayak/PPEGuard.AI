@@ -34,7 +34,7 @@ load_dotenv()
 IMGBB_API_KEY = os.getenv("IMGBB_API_KEY")
 
 # Load YOLOv8 model 
-model = YOLO(r"J:\#PPE Suit Detection\PPEGuard.AI\models\best.pt")
+model = YOLO(r"J:\Projects\#PPE Suit Detection\PPEGuard.AI\models\best.pt")
 
 
 # Upload image to ImgBB

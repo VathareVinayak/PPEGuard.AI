@@ -61,7 +61,7 @@ import os
 import uuid
 
 router = APIRouter()
-model = YOLO(r"J:\#PPE Suit Detection\PPEGuard.AI\models\best.pt")  # Load YOLO model
+model = YOLO(r"J:\Projects\#PPE Suit Detection\PPEGuard.AI\models\best.pt")  # Load YOLO model
 
 def classify_labels(labels):
     for label in labels:

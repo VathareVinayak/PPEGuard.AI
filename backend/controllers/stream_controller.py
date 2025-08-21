@@ -7,7 +7,7 @@ from ultralytics import YOLO
 stream_router = APIRouter(prefix="/stream", tags=["Live Stream"])
 
 # Load the YOLO model
-model = YOLO(r"D:\#Safety Kit\Construction-Site-Safety-PPE-Detection\models\best.pt")
+model = YOLO(r"J:\Projects\#PPE Suit Detection\PPEGuard.AI\models\best.pt")
 
 def generate_frames():
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
